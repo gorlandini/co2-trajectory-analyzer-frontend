@@ -154,3 +154,14 @@ body {
   padding: 2rem;
   font-size: 0.875rem;
 }
+
+/* ── TabMenu spacing ── */
+.app-nav .p-tabmenu .p-tabmenu-nav {
+  gap: 0.5rem;
+  padding: 0 1.5rem;
+}
+
+.app-nav .p-tabmenu .p-tabmenuitem .p-menuitem-link {
+  padding: 0.75rem 1.25rem;
+  gap: 6px;
+}
