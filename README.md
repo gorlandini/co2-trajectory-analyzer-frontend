@@ -2,8 +2,10 @@
 
 A full-stack data engineering project that processes historical CO₂ emissions data using an **Apache Beam pipeline**, exposes the results through a **Spring Boot REST API**, and visualizes them in a **React dashboard**.
 
-> **Status:** Frontend complete and live. Backend pipeline in active development.  
-> **Live demo:** [your-app.vercel.app](https://your-app.vercel.app)  
+![CO2 Dashboard](./screenshot.png)
+
+> **Live demo:** [co2-trajectory-analyzer-frontend-s9.vercel.app](https://co2-trajectory-analyzer-frontend-s9.vercel.app)
+> **Status:** Frontend complete and live. Backend pipeline in active development.
 > **Pipeline walkthrough:** [youtube.com/watch?v=sV6d5WAzFm0](https://youtu.be/sV6d5WAzFm0?si=wd2DQT6tLwUcs3HC)
 
 ---
@@ -40,6 +42,7 @@ CSV data source
 │                                 │
 │  KPI cards · Line chart         │
 │  Bar chart · DataTable          │
+│  Country filter · Comparator    │
 └─────────────────────────────────┘
 ```
 
@@ -47,13 +50,13 @@ CSV data source
 
 ## Tech Stack
 
-| Layer      | Technology                              |
-|------------|-----------------------------------------|
-| Pipeline   | Java 17, Apache Beam (DirectRunner)     |
-| Database   | PostgreSQL 15 (Docker)                  |
-| Backend    | Spring Boot 3, Spring Data JPA          |
-| Frontend   | React 18, PrimeReact, Chart.js, Axios   |
-| Deploy     | Vercel (frontend), Docker Compose (infra) |
+| Layer | Technology |
+|-------|-----------|
+| Pipeline | Java 17, Apache Beam (DirectRunner) |
+| Database | PostgreSQL 15 (Docker) |
+| Backend | Spring Boot 3, Spring Data JPA |
+| Frontend | React 18, PrimeReact, Chart.js, Axios |
+| Deploy | Vercel (frontend), Docker Compose (infra) |
 
 ---
 
@@ -69,7 +72,7 @@ co2-trajectory-analyzer/
 │       ├── FilterByPeriod.java      # date range filter transform
 │       ├── AggregateCountryStats.java  # aggregation transform (in progress)
 │       ├── PostgresWriter.java      # sink to PostgreSQL (in progress)
-│       └── Co2Pipeline.java         # pipeline entrypoint
+│       └── Co2Pipeline.java        # pipeline entrypoint
 │
 ├── backend/                         # Spring Boot (Java)
 │   └── src/main/java/
@@ -89,7 +92,9 @@ co2-trajectory-analyzer/
 │   │   │   ├── KpiCard.jsx
 │   │   │   ├── EmissionsChart.jsx
 │   │   │   └── CountryTable.jsx
-│   │   └── pages/Dashboard.jsx
+│   │   └── pages/
+│   │       ├── Dashboard.jsx
+│   │       └── Compare.jsx          # country comparator
 │   └── package.json
 │
 ├── docker-compose.yml               # PostgreSQL + future services
